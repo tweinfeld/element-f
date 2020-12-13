@@ -9,9 +9,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Vonage/functional-custom-element.git"
+    "url": "git+https://github.com/Vonage/element-f.git"
   },
-  "keywords": [],
+  "keywords": ["Custom Elements", "Functional", "Shim", "Wrapper"],
   "author": "Tal Weinfeld",
   "license": "MIT",
   "bugs": {
