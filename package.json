@@ -1,6 +1,6 @@
 {
   "name": "@vonage/element-f",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A functional shim to custom element definition",
   "main": "./src/element-f.js",
   "module": "./src/element-f.js",

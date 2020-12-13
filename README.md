@@ -30,7 +30,7 @@ The following events are thrown:
   * **`disconnected`** - Fired upon `disconnectedCallback`
   * **`attribute`** - Fired when an observed attribute changes.
 
-To observe attributes, just add the list to `elementF` call:
+To observe attributes, just add their list to `elementF` call:
 ```javascript
 const MyElement = elementF(function(life){
     life.on('attribute', ({ name, oldValue, newValue })=> {
