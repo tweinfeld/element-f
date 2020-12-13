@@ -1,21 +1,36 @@
 {
   "name": "@vonage/element-f",
-  "version": "1.0.2",
+  "version": "1.0.7",
   "description": "A functional shim to custom element definition",
-  "main": "./src/element-f.js",
+  "main": "./dist/umd.min.js",
   "module": "./src/element-f.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Vonage/element-f.git"
   },
-  "keywords": ["Custom Elements", "Functional", "Shim", "Wrapper"],
+  "files": [
+    "LICENSE",
+    "dist/umd.min.js",
+    "src/element-f.js"
+  ],
+  "keywords": [
+    "Custom Elements",
+    "Functional",
+    "Shim",
+    "Wrapper"
+  ],
   "author": "Tal Weinfeld",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Vonage/functional-custom-element/issues"
   },
-  "homepage": "https://github.com/Vonage/functional-custom-element#readme"
+  "homepage": "https://github.com/Vonage/functional-custom-element#readme",
+  "devDependencies": {
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0"
+  }
 }
