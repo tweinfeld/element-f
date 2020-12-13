@@ -1,10 +1,18 @@
 # element-f
 A functional shim to custom element definition.
 
+### Installation
+
+```
+npm i @vonage/element-f
+```
+
 ### Basics
 In order to define a custom-element, you only need one definition function:
 
 ```javascript
+import elementF from "@voange/element-f";
+
 const MyElement = elementF(function(){
     // --- Your logic goes here --
 });
