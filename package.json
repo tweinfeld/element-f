@@ -1,0 +1,21 @@
+{
+  "name": "@vonage/element-f",
+  "version": "1.0.0",
+  "description": "A functional shim to custom element definition",
+  "main": "./src/element-f.js",
+  "module": "./src/element-f.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vonage/functional-custom-element.git"
+  },
+  "keywords": [],
+  "author": "Tal Weinfeld",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Vonage/functional-custom-element/issues"
+  },
+  "homepage": "https://github.com/Vonage/functional-custom-element#readme"
+}
