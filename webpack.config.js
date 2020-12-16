@@ -1,6 +1,4 @@
-const
-    path = require('path'),
-    webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
   "mode": "production",
@@ -9,6 +7,7 @@ module.exports = {
     path: path.join(__dirname, "./dist"),
     filename: "umd.min.js",
     libraryTarget: "umd",
+    libraryExport: "default",
     library: "ElementF"
   }
 }
