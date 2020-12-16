@@ -14,19 +14,22 @@ In order to define a custom-element, you only need one definition function:
 import elementF from "@voange/element-f";
 
 const MyElement = elementF(()=> {
-    // --- Your logic goes here --
+  // Your logic goes here  
+  const shadow = this.attachShadow({mode: 'open'});
 });
 ```
 
 To tap into lifecycle events, this function can use the "life" event emitter:
 ```javascript
 const MyElement = elementF((life)=> {
-    life.once('connect', ()=> console.log(`I'm Alive!`));
+    const shadow = this.attachShadow({mode: 'open'});
+    // Listen once to when this component connects to a document 
+    life.once('connect', ()=> shadow.innerHTML = `I'm Alive!`);
 });
 ```
 
 The "life" event emitter supports three methods:
-  * **`once(name, fn)`<br/>`on(name, fn)`** - Registers **fn** for **name**d events. `once` will invoke **fn** once.
+  * **`once(name, fn)`<br/>`on(name, fn)`** - Registers **`fn`** for events of name **`name`**. **`once()`** will invoke **fn** once.
     * **`name`** - The name of the event to listen to
     * **`fn(payload)`** - The function to be called when  an event occurs
       * **`payload`** - An object containing information regarding the event
