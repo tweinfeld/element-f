@@ -4,8 +4,11 @@ export default function (generator, attributes = []) {
     Element = class extends HTMLElement {
       constructor() {
         super();
-        const emitter = (function () {
-          const eventMap = new Map();
+        const emitter = (function(){
+          const
+              eventMap = new Map(),
+              onceMap = new WeakMap();
+
           this[BUS] = function ({type, ...payload}) {
             [...(eventMap.get(type) || new Set()).values()].forEach((handler) => handler(payload));
           };
@@ -15,7 +18,15 @@ export default function (generator, attributes = []) {
               eventMap.set(type, (eventMap.get(type) || new Set()).add(handler));
             },
             off(type, handler) {
-              (eventMap.get(type) || new Set()).delete(handler);
+              (eventMap.get(type) || new Set()).delete(onceMap.get(handler) ?? handler);
+            },
+            once(type, handler) {
+              let wrappedHandler = (...props)=> {
+                handler(...props);
+                this.off(type, wrappedHandler);
+              };
+              onceMap.set(handler, wrappedHandler);
+              this.on(type, wrappedHandler);
             }
           };
         }).call(this);
@@ -28,14 +39,19 @@ export default function (generator, attributes = []) {
       }
 
       connectedCallback() {
-        this[BUS]({type: "connected"});
+        this[BUS]({type: "connect"});
       }
 
       disconnectedCallback() {
-        this[BUS]({type: "disconnected"});
+        this[BUS]({type: "disconnect"});
       }
     };
 
-  Element.observedAttributes = attributes;
+  Object.defineProperty(Element, 'observedAttributes', {
+    configurable: false,
+    enumerable: false,
+    get: ()=> attributes
+  });
+
   return Element;
 }
