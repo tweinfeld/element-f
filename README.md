@@ -49,8 +49,8 @@ const MyElement = elementF((life)=> {
 }, ["one", "two"]);
 ```
 
-### Usage 
-To define a custom element using the standard class notation:
+#### Usage Examples
+To define a custom element using standard class notation, you'd write something like:
 
 ```javascript
 class MyButton extends HTMLElement {
@@ -74,7 +74,7 @@ class MyButton extends HTMLElement {
 }
 ```
 
-Defining the same element using element-f would look like this:
+To defining the same element using **element-f** would look like this:
 
 ```javascript
 const MyButton = elementF((life)=> {
@@ -91,15 +91,3 @@ const MyButton = elementF((life)=> {
 
 }, ['disabled']);
 ```
-
-
-
-
-
-
-
-
-
-
-
-
