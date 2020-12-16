@@ -13,24 +13,24 @@ In order to define a custom-element, you only need one definition function:
 ```javascript
 import elementF from "@voange/element-f";
 
-const MyElement = elementF(function(){
+const MyElement = elementF(()=> {
     // --- Your logic goes here --
 });
 ```
 
 To tap into lifecycle events, this function can use the "life" event emitter:
 ```javascript
-const MyElement = elementF(function(life){
+const MyElement = elementF((life)=> {
     life.once('connect', ()=> console.log(`I'm Alive!`));
 });
 ```
 
 The "life" event emitter supports three methods:
-  * **once(name, fn)<br/>on(name, fn)** - registers **fn** for **name** events 
-    * **name** - The name of the event to listen to
-    * **fn(payload)** - The function to be called when  an event occurs
-      * **payload** - An object containing information regarding the event
-  * **off(name, fn)** - Removes an event handler previously registered using **on** or **once**.
+  * **`once(name, fn)`<br/>`on(name, fn)`** - Registers **fn** for **name**d events. `once` will invoke **fn** once.
+    * **`name`** - The name of the event to listen to
+    * **`fn(payload)`** - The function to be called when  an event occurs
+      * **`payload`** - An object containing information regarding the event
+  * **`off(name, fn)`** - Removes an event handler previously registered using **on** or **once**.
 
 The following events are thrown:
   * **`connect`** - Fired upon `connectedCallback`. Delivers no payload.
@@ -39,7 +39,7 @@ The following events are thrown:
 
 To observe attributes, just add their list to `elementF` call:
 ```javascript
-const MyElement = elementF(function(life){
+const MyElement = elementF((life)=> {
     life.on('attribute', ({ name, previousValue, newValue })=> {
         // name can be "one" or "two"
     });
@@ -74,7 +74,7 @@ class MyButton extends HTMLElement {
 Defining the same element using element-f would look like this:
 
 ```javascript
-const MyButton = elementF(function(life){
+const MyButton = elementF((life)=> {
   
   life.on('connect', ()=> { 
     this.innerHTML = "<b>I'm an x-foo-with-markup!</b>"; 
