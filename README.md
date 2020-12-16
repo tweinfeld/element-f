@@ -21,19 +21,26 @@ const MyElement = elementF(function(){
 To tap into lifecycle events, this function can use the "life" event emitter:
 ```javascript
 const MyElement = elementF(function(life){
-    life.on('connected', ()=> console.log(`I'm Alive!`));
+    life.once('connect', ()=> console.log(`I'm Alive!`));
 });
 ```
 
+The "life" event emitter supports three methods:
+  * **once(name, fn)<br/>on(name, fn)** - registers **fn** for **name** events 
+    * **name** - The name of the event to listen to
+    * **fn(payload)** - The function to be called when  an event occurs
+      * **payload** - An object containing information regarding the event
+  * **off(name, fn)** - Removes an event handler previously registered using **on** or **once**.
+
 The following events are thrown:
-  * **`connected`** - Fired upon `connectedCallback`
-  * **`disconnected`** - Fired upon `disconnectedCallback`
-  * **`attribute`** - Fired when an observed attribute changes.
+  * **`connect`** - Fired upon `connectedCallback`. Delivers no payload.
+  * **`disconnect`** - Fired upon `disconnectedCallback`. Delivers no payload.
+  * **`attribute`** - Fired when an observed attribute changes. Delivers **name**, **previousValue** and **newValue** as payload.
 
 To observe attributes, just add their list to `elementF` call:
 ```javascript
 const MyElement = elementF(function(life){
-    life.on('attribute', ({ name, oldValue, newValue })=> {
+    life.on('attribute', ({ name, previousValue, newValue })=> {
         // name can be "one" or "two"
     });
 }, ["one", "two"]);
@@ -58,7 +65,7 @@ class MyButton extends HTMLElement {
       this.classList.toggle('disabled', newValue); 
     }
 
-    connectedCallback() {
+    connectCallback() {
       this.innerHTML = "<b>I'm an x-foo-with-markup!</b>";
     }
 }
@@ -69,7 +76,7 @@ Defining the same element using element-f would look like this:
 ```javascript
 const MyButton = elementF(function(life){
   
-  life.on('connected', ()=> { 
+  life.on('connect', ()=> { 
     this.innerHTML = "<b>I'm an x-foo-with-markup!</b>"; 
   });
   
