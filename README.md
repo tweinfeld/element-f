@@ -91,3 +91,7 @@ const MyButton = elementF((life)=> {
 
 }, ['disabled']);
 ```
+
+### What does Element-F solve?
+
+**Element-F** supplies a stylistic framework, not a fundamental solution to a problem. If you're happy with OOP-styled constructs, you would probably not draw much enjoyment from using it :)
