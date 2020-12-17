@@ -1,5 +1,5 @@
 {
-  "name": "@vonage/element-f",
+  "name": "element-f",
   "version": "1.1.2",
   "description": "A functional shim to custom element definition",
   "main": "./dist/umd.min.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Vonage/element-f.git"
+    "url": "git+https://github.com/tweinfeld/element-f.git"
   },
   "files": [
     "LICENSE",
@@ -26,9 +26,9 @@
   "author": "Tal Weinfeld",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Vonage/functional-custom-element/issues"
+    "url": "https://github.com/tweinfeld/element-f/issues"
   },
-  "homepage": "https://github.com/Vonage/functional-custom-element#readme",
+  "homepage": "https://github.com/tweinfeld/element-f#readme",
   "devDependencies": {
     "webpack": "^5.10.1",
     "webpack-cli": "^4.2.0"
