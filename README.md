@@ -13,7 +13,7 @@ In order to define a custom-element, you only need one definition function:
 ```javascript
 import elementF from "element-f";
 
-const MyElement = elementF(()=> {
+const MyElement = elementF(function(){
   // Your logic goes here  
   const shadow = this.attachShadow({mode: 'open'});
 });
@@ -21,7 +21,7 @@ const MyElement = elementF(()=> {
 
 To tap into lifecycle events, this function can use the "life" event emitter:
 ```javascript
-const MyElement = elementF((life)=> {
+const MyElement = elementF(function(life)=> {
     const shadow = this.attachShadow({mode: 'open'});
     // Listen once to when this component connects to a document 
     life.once('connect', ()=> shadow.innerHTML = `I'm Alive!`);
@@ -42,7 +42,7 @@ The following events are thrown:
 
 To observe attributes, just add their list to `elementF` call:
 ```javascript
-const MyElement = elementF((life)=> {
+const MyElement = elementF(function(life)=> {
     life.on('attribute', ({ name, previousValue, newValue })=> {
         // name can be "one" or "two"
     });
@@ -77,7 +77,7 @@ class MyButton extends HTMLElement {
 To defining the same element using **element-f** would look like this:
 
 ```javascript
-const MyButton = elementF((life)=> {
+const MyButton = elementF(function(life)=> {
   
   life.on('connect', ()=> { 
     this.innerHTML = "<b>I'm an x-foo-with-markup!</b>"; 
