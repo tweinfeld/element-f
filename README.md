@@ -38,7 +38,7 @@ The "life" event emitter supports three methods:
 The following events are thrown:
   * **`connect`** - Fired upon `connectedCallback`. Delivers no payload.
   * **`disconnect`** - Fired upon `disconnectedCallback`. Delivers no payload.
-  * **`attribute:[Attribute's Name]`** - Fired when an observed attribute changes. Delivers **previousValue** and **newValue** as payload.
+  * **`attribute:[Attribute Name]`** - Fired when an observed attribute changes. Delivers **previousValue** and **newValue** as payload.
 
 To observe attributes, just add their list to `elementF` call:
 ```javascript
