@@ -1,7 +1,7 @@
 {
   "name": "element-f",
-  "version": "1.1.6",
-  "description": "A functional shim to custom element definition",
+  "version": "2.0.0",
+  "description": "Define your custom elements with elegance",
   "main": "./dist/umd.min.js",
   "module": "./src/element-f.js",
   "scripts": {
@@ -13,6 +13,7 @@
     "url": "git+https://github.com/tweinfeld/element-f.git"
   },
   "files": [
+    "README.md",
     "LICENSE",
     "dist/umd.min.js",
     "src/element-f.js"

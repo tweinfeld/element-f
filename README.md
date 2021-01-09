@@ -1,5 +1,5 @@
 # element-f
-A functional shim to custom element definition.
+Define your custom elements with elegance 👒
 
 ### Installation
 
@@ -38,19 +38,23 @@ The "life" event emitter supports three methods:
 The following events are thrown:
   * **`connect`** - Fired upon `connectedCallback`. Delivers no payload.
   * **`disconnect`** - Fired upon `disconnectedCallback`. Delivers no payload.
-  * **`attribute`** - Fired when an observed attribute changes. Delivers **name**, **previousValue** and **newValue** as payload.
+  * **`attribute:[Attribute's Name]`** - Fired when an observed attribute changes. Delivers **previousValue** and **newValue** as payload.
 
 To observe attributes, just add their list to `elementF` call:
 ```javascript
 const MyElement = elementF(function(life)=> {
-    life.on('attribute', ({ name, previousValue, newValue })=> {
-        // name can be "one" or "two"
+    life.on('attribute:foo', ({ previousValue, newValue })=> {
+        // Do something when attribute "foo" changes value
     });
-}, ["one", "two"]);
+
+    life.on('attribute:bar', ({ previousValue, newValue })=> {
+        // Do something when attribute "bar" changes value
+    });
+}, ["foo", "bar"]);
 ```
 
 #### Usage Examples
-To define a custom element using standard class notation, you'd write something like:
+Whereas defining custom elements using standard class notation looks like this:
 
 ```javascript
 class MyButton extends HTMLElement {
@@ -65,7 +69,7 @@ class MyButton extends HTMLElement {
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
-      this.classList.toggle('disabled', newValue); 
+      if(name === "disabled") this.classList.toggle('disabled', newValue);
     }
 
     connectCallback() {
@@ -74,24 +78,20 @@ class MyButton extends HTMLElement {
 }
 ```
 
-To defining the same element using **element-f** would look like this:
+With **element-f** the same custom element definition would look like this:
 
 ```javascript
 const MyButton = elementF(function(life)=> {
-  
-  life.on('connect', ()=> { 
-    this.innerHTML = "<b>I'm an x-foo-with-markup!</b>"; 
-  });
-  
-  life.on('attribute', ({ name, newValue, oldValue })=> {
-    this.classList.toggle('disabled', newValue); 
-  });
-  
+
   console.log(`I'm alive!`);
+  life.on('connect', ()=> this.innerHTML = "<b>I'm an x-foo-with-markup!</b>");
+  life.on('attribute:disabled', ({ newValue, oldValue })=> this.classList.toggle('disabled', newValue));
 
 }, ['disabled']);
 ```
 
+Compact, functional and elegant 😇
+
 ### What does Element-F solve?
 
-**Element-F** supplies a stylistic framework, not a fundamental solution to a problem. If you're happy with OOP-styled constructs, you would probably not draw much enjoyment from using it :)
+**Element-F** is a stylistic framework, not a fundamental solution to any specific architectural or functional problem. If you're happy with OOP-styled constructs, you probably wouldn't draw much enjoyment from using it :)
