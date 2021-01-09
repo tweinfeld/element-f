@@ -35,7 +35,7 @@ export default function (generator, attributes = []) {
       }
 
       attributeChangedCallback(attributeName, previousValue, newValue) {
-        this[BUS]({type: "attribute", name: attributeName, newValue, previousValue});
+        this[BUS]({type: ["attribute", attributeName].join(':'), newValue, previousValue});
       }
 
       connectedCallback() {
