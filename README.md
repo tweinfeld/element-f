@@ -22,9 +22,11 @@ const MyElement = elementF(function(){
 To tap into lifecycle events, this function can observe the "life" event emitter, passed to it as an argument:
 ```javascript
 const MyElement = elementF(function(life)=> {
+
     const shadow = this.attachShadow({mode: 'open'});
     // Listen once to when this component connects to a document 
     life.once('connect', ()=> shadow.innerHTML = `I'm Alive!`);
+
 });
 ```
 
@@ -43,6 +45,7 @@ The following events are thrown:
 To observe attributes, just add their list to `elementF` call:
 ```javascript
 const MyElement = elementF(function(life) {
+
     life.on('attribute:foo', ({ previousValue, newValue })=> {
         // Do something when attribute "foo" changes value
     });
@@ -50,6 +53,7 @@ const MyElement = elementF(function(life) {
     life.on('attribute:bar', ({ previousValue, newValue })=> {
         // Do something when attribute "bar" changes value
     });
+
 }, ["foo", "bar"]);
 ```
 
