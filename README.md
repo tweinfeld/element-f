@@ -42,7 +42,7 @@ The following events are thrown:
 
 To observe attributes, just add their list to `elementF` call:
 ```javascript
-const MyElement = elementF(function(life)=> {
+const MyElement = elementF(function(life) {
     life.on('attribute:foo', ({ previousValue, newValue })=> {
         // Do something when attribute "foo" changes value
     });
@@ -81,7 +81,7 @@ class MyButton extends HTMLElement {
 With **element-f** the same custom element definition would look like this:
 
 ```javascript
-const MyButton = elementF(function(life)=> {
+const MyButton = elementF(function(life){
 
   console.log(`I'm alive!`);
   life.on('connect', ()=> this.innerHTML = "<b>I'm an x-foo-with-markup!</b>");
