@@ -14,8 +14,10 @@ In order to define a custom-element, you only need one definition function:
 import elementF from "element-f";
 
 const MyElement = elementF(function(){
+
   // Your logic goes here  
   const shadow = this.attachShadow({mode: 'open'});
+
 });
 ```
 
