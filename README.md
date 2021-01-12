@@ -81,7 +81,7 @@ class MyButton extends HTMLElement {
 With **element-f** the same custom element definition would look like this:
 
 ```javascript
-const MyButton = elementF(function(life)=> {
+const MyButton = elementF(function(life){
 
   console.log(`I'm alive!`);
   life.on('connect', ()=> this.innerHTML = "<b>I'm an x-foo-with-markup!</b>");
