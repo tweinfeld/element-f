@@ -26,6 +26,7 @@ To tap into lifecycle events, this function can observe the "life" event emitter
 const MyElement = elementF(function(life)=> {
 
     const shadow = this.attachShadow({mode: 'open'});
+
     // Listen once to when this component connects to a document 
     life.once('connect', ()=> shadow.innerHTML = `I'm Alive!`);
 
@@ -89,9 +90,11 @@ With **element-f** the same custom element definition would look like this:
 ```javascript
 const MyButton = elementF(function(life){
 
-  console.log(`I'm alive!`);
   life.on('connect', ()=> this.innerHTML = "<b>I'm an x-foo-with-markup!</b>");
+
   life.on('attribute:disabled', ({ newValue, oldValue })=> this.classList.toggle('disabled', newValue));
+
+  console.log(`I'm alive!`);
 
 }, ['disabled']);
 ```
