@@ -71,7 +71,7 @@ class MyButton extends HTMLElement {
     }
 
     static get observedAttributes(){
-        return ['disabled'];
+      return ['disabled'];
     }
     
     attributeChangedCallback(name, oldValue, newValue) {
