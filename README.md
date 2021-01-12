@@ -42,7 +42,7 @@ The following events are thrown:
 
 To observe attributes, just add their list to `elementF` call:
 ```javascript
-const MyElement = elementF(function(life)=> {
+const MyElement = elementF(function(life) {
     life.on('attribute:foo', ({ previousValue, newValue })=> {
         // Do something when attribute "foo" changes value
     });
