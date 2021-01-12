@@ -19,7 +19,7 @@ const MyElement = elementF(function(){
 });
 ```
 
-To tap into lifecycle events, this function can use the "life" event emitter:
+To tap into lifecycle events, this function can observe the "life" event emitter, that's passed as an argument:
 ```javascript
 const MyElement = elementF(function(life)=> {
     const shadow = this.attachShadow({mode: 'open'});
